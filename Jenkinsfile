@@ -32,7 +32,7 @@ pipeline {
             steps {
 
                     sh """
-                    docker build -t nanda7/backed:${appVersion} .
+                    docker build -t nanda7/backend:${appVersion} .
                     docker images
                     """
                     
