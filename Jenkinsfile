@@ -22,19 +22,20 @@ pipeline {
                 }
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npn install'
-            }
-        }
-        stage('Deploy') {
-            when {
-                expression { env.GIT_BRANCH == "origin/main" }
-            }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         sh 'npn install'
+        //     }
+        // }
+        stage('Docker Build') {
+            
             steps {
 
-                    sh 'echo This is deploy'
-                    //error 'pipeline failed'
+                    sh """
+                    docker build -t nanda7/backed:${appVersion}
+                    docker images
+                    """
+                    
 
             }
         }
